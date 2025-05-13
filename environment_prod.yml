@@ -1,0 +1,14 @@
+name: grn
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.12.8
+  - pandas=2.2.3
+  - numpy=1.26.4
+  - scanpy=1.11.0
+  - plotly=6.0.1
+  - pip=25.0.1
+  - pip:
+      - rpy2==3.5.17

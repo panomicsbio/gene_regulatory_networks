@@ -1,0 +1,13 @@
+.DS_Store
+.idea
+*.iml
+.vscode
+
+__pycache__/
+.pytest_cache/
+
+.coverage
+
+tests/output/*
+refs/.Rapp.history
+tests/data/out/*

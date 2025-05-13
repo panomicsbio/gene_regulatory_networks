@@ -1,0 +1,32 @@
+# Test and development files
+tests/
+__pycache__/
+app/__pycache__/
+*.pyc
+.pytest_cache/
+pytest.ini
+conftest.py
+requirements_dev.txt
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# IDE and editor files
+.vscode/
+.idea/
+.editorconfig
+.cursorrules
+
+# Build and dev environment files
+.env
+environment.yml
+build.sh
+ami_setup.sh
+
+# Misc
+.DS_Store
+figures/
+data/
+.github/

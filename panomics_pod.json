@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "inputs": [
+    {
+      "name": "adata",
+      "description": "The h5ad file containing the dataset",
+      "type": "file"
+    },
+    {
+      "name": "tfs",
+      "description": "The transcription factors to include in the GRN",
+      "type": "file",
+      "optional": true
+    },
+    {
+      "name": "n_trees",
+      "description": "The number of trees to use in the GRN",
+      "type": "string"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "genie_weights",
+      "description": "The weights of the GRN",
+      "type": "file"
+    },
+    {
+      "name": "genie_links",
+      "description": "The links of the GRN",
+      "type": "file"
+    }
+  ],
+  "default_requirements": {
+    "instance_type": "pan.serverless.small",
+    "memory_mb": 8192,
+    "timeout_seconds": 600
+  },
+  "network": {
+    "allow_all_outbound": true
+  },
+  "modifies_omics": false
+}
