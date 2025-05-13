@@ -78,6 +78,8 @@ COPY environment_prod.yml /app/environment.yml
 RUN mamba env create -f /app/environment.yml && \
     mamba clean -afy
 
+ENV PYTHONUNBUFFERED=1
+
 # Copy application files
 COPY . /app/
 
