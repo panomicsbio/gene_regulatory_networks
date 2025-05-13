@@ -64,7 +64,7 @@ RUN R -q -e "install.packages('BiocManager', dependencies=TRUE)" && \
     R -q -e "options(repos = c(CRAN_mirror = 'https://cloud.r-project.org', BioC_mirror = 'https://bioconductor.org'))" && \
     R -q -e "options(warn=2); BiocManager::install(version = '3.21')"
 
-RUN R -q -e "options(warn=2); install.packages('doRNG', dependencies = TRUE)"
+RUN R -q -e "options(warn=2); install.packages('doRNG')"
 RUN R -q -e "options(warn=2); BiocManager::install('GENIE3', dependencies=TRUE, force=TRUE)"
 
 
