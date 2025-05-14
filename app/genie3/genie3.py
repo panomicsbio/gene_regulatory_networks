@@ -1,22 +1,28 @@
-from anndata import AnnData
-import numpy as np
-import scipy.sparse as sp
-import pandas as pd
-import multiprocessing
-from rpy2.robjects import pandas2ri, r
-import rpy2.robjects as ro
-from rpy2.robjects.conversion import localconverter
-from app.utils import get_R_script_base_path
 from app.model import GeneRegulatoryNetworkParams
+from app.utils import get_R_script_base_path
+
+import multiprocessing
+import pandas as pd
+import scipy.sparse as sp
+import numpy as np
+from anndata import AnnData
+import os
+
+os.environ['R_NSIZE'] = '700000'
 
 
 class Genie3:
+
     def __init__(self, adata: AnnData, tf_list: list[str], params: GeneRegulatoryNetworkParams):
         self.adata = adata
         self.tf_list = tf_list
         self.params = params
 
     def run(self):
+        import rpy2.robjects as ro
+        from rpy2.robjects.conversion import localconverter
+        from rpy2.robjects import pandas2ri, r
+
         # Get gene and cell names
         genes = self.adata.var_names.tolist()
         cells = self.adata.obs_names.tolist()

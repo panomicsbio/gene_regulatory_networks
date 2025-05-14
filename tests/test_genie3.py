@@ -10,7 +10,7 @@ from app.model import GeneRegulatoryNetworkParams
 
 class TestGenie3(unittest.TestCase):
 
-    def test_genie3(self):
+    def test_genie3_small(self):
         adata = sc.read_h5ad(os.path.join(
             os.path.dirname(__file__), "data", "in", "h5ad", "GSE43580.h5ad"))
         with open(os.path.join(
@@ -22,7 +22,16 @@ class TestGenie3(unittest.TestCase):
         self.assertTrue(weights.shape[0] == 1030)
         self.assertTrue(weights.shape[1] == adata.shape[1])
         self.assertTrue(links.shape[1] == 3)
-        links.to_csv(os.path.join(
-            os.path.dirname(__file__), "data", "out", "genie_links.csv"))
-        weights.to_csv(os.path.join(
-            os.path.dirname(__file__), "data", "out", "genie_weights.csv"))
+
+    def test_genie3_large(self):
+        adata = sc.read_h5ad(os.path.join(
+            os.path.dirname(__file__), "data", "in", "h5ad", "SKCM.h5ad"))
+        with open(os.path.join(
+                os.path.dirname(__file__), "data", "in", "tfs", "tf.txt"), "r") as f:
+            tf_list = [line.strip() for line in f.read().splitlines()]
+        genie3 = Genie3(
+            adata, tf_list, GeneRegulatoryNetworkParams(n_trees=50))
+        weights, links = genie3.run()
+        self.assertTrue(weights.shape[0] == 1030)
+        self.assertTrue(weights.shape[1] == adata.shape[1])
+        self.assertTrue(links.shape[1] == 3)

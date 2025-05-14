@@ -52,6 +52,8 @@ run_genie3 <- function(expr_matrix,
         verbose = TRUE
     )
 
+    gc()
+
     cat("GENIE3 analysis completed successfully.\n")
     return(as.data.frame(weight_matrix))
 }
